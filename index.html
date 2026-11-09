@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>לייבי דייטש | א נייע יאר, קליפים והזמנות לאירועים</title>
+<meta name="description" content="האתר של הזמר לייבי דייטש: הסדרה החדשה א נייע יאר, קליפים, קטעים מחתונות והזמנה לאירוע בוואטסאפ.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#261f25">
+<link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="wordmark" href="#top" aria-label="לייבי דייטש, לראש הדף">לייבי דייטש</a>
+    <nav class="nav__links" aria-label="ניווט ראשי">
+      <a href="#series">א נייע יאר</a>
+      <a href="#clips">קליפים</a>
+      <a href="#songs">השירים</a>
+      <a href="#story">הסיפור</a>
+    </nav>
+    <a class="btn btn--gold btn--sm" href="#booking">הזמנה לאירוע</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__media">
+      <!-- סרטון ההירו: נכנס לתנוחה מהעטיפה, ונעצר על הפריים האחרון -->
+      <video class="hero__img" id="hero-video" muted playsinline autoplay preload="auto"
+             poster="assets/hero-poster.jpg" aria-label="לייבי דייטש נשען קדימה ומניח יד על הסנטר, על רקע סגול מעושן">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero__veil"></div>
+      <h1 id="hero-title" class="hero__name"><span>לייבי דייטש</span></h1>
+      <button class="hero__replay" id="hero-replay" type="button" aria-label="לצפות בפתיחה">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      </button>
+    </div>
+
+    <div class="hero__panel">
+      <p class="eyebrow eyebrow--light">חדש · תשרי תשפ״ז</p>
+      <p class="hero__lead">חמישה שירים חדשים <br>לחודש תשרי</p>
+      <p class="hero__meta">מנשה פרלשטיין מגיש</p>
+      <div class="hero__ctas">
+        <a class="btn btn--gold" href="#series"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>להאזנה לסדרה</a>
+        <a class="btn btn--ghost" href="#booking">הזמנה לאירוע</a>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#series" aria-label="גלילה לסדרה">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===== SERIES: A NEIE YOR ===== -->
+  <section class="series" id="series" aria-labelledby="series-title" style="--tc:#8a5a6e">
+    <div class="series__glow" aria-hidden="true"></div>
+    <div class="series__num" aria-hidden="true" id="series-num">02</div>
+
+    <div class="wrap series__grid">
+      <div class="series__head reveal">
+        <p class="eyebrow">הסדרה החדשה</p>
+        <h2 id="series-title" class="display">א נייע יאר</h2>
+        <p class="series__sub">חמישה שירים לימים הנוראים ולסוכות.<br>לכל שיר עטיפה משלו, ובחרנו לכל שיר את הצבע שלו.</p>
+        <p class="series__credits">לחנים: אברימי שיף ולייבי דייטש · עיבודים: שלוימי לוי · מנשה פרלשטיין מגיש</p>
+
+        <ol class="tracks" id="tracks" aria-label="השירים בסדרה"></ol>
+
+        <div class="listen">
+          <span class="listen__label">להאזנה גם ב:</span>
+          <a href="https://open.spotify.com/album/6jnKoawIGGaruiMvYVcGN1" target="_blank" rel="noopener">ספוטיפיי</a>
+          <a href="https://music.apple.com/il/album/6812820288" target="_blank" rel="noopener">אפל מיוזיק</a>
+          <a href="https://www.deezer.com/album/1080281712" target="_blank" rel="noopener">דיזר</a>
+        </div>
+      </div>
+
+      <div class="series__stage reveal">
+        <div class="player" id="player">
+          <button class="player__facade" id="player-facade" type="button" aria-label="נגינת השיר">
+            <img id="player-thumb" alt="" loading="lazy">
+            <span class="play-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+        </div>
+        <div class="now">
+          <p class="now__count" id="now-count">שיר 2 מתוך 5</p>
+          <h3 class="now__title" id="now-title">א נייע יאר</h3>
+          <p class="now__by" id="now-by"></p>
+          <p class="now__blurb" id="now-blurb"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLIPS ===== -->
+  <section class="clips" id="clips" aria-labelledby="clips-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">לראות ולשמוע</p>
+          <h2 id="clips-title" class="display display--gold">קליפים ומהחתונות</h2>
+        </div>
+        <div class="filters" role="tablist" aria-label="סינון סרטונים" id="filters"></div>
+      </div>
+      <div class="clip-grid" id="clip-grid"></div>
+      <p class="clips__more reveal"><a class="link-arrow" href="https://www.youtube.com/@LaybiDaitsch" target="_blank" rel="noopener">לכל הסרטונים בערוץ היוטיוב ←</a></p>
+    </div>
+  </section>
+
+  <!-- ===== SONGS / RELEASES ===== -->
+  <section class="songs" id="songs" aria-labelledby="songs-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">כל ההוצאות</p>
+          <h2 id="songs-title" class="display display--gold">השירים</h2>
+        </div>
+        <p class="sec-head__aside">מ״קרב יום״ ועד ״א נייע יאר״,<br>לפי סדר היציאה.</p>
+      </div>
+      <ol class="releases" id="releases"></ol>
+    </div>
+  </section>
+
+  <!-- ===== STORY ===== -->
+  <section class="story" id="story" aria-labelledby="story-title">
+    <div class="wrap story__grid">
+      <div class="story__text reveal">
+        <p class="eyebrow eyebrow--light">הסיפור</p>
+        <h2 id="story-title" class="display display--gold">מחבר מקהלה לסולן</h2>
+        <p>לייבי שר שנים במקהלה ולא חלם על סולו. בחתונה של גיסו, שאליה הגיע כמעט בעל כורחו כזמר, שמעו אותו המפיק מנשה פרלשטיין והרשי סגל. משם זה התחיל.</p>
+        <p>היום הוא זמר חתונות מבוקש. רגוע ושקט בשיחה, ומלא אנרגיה על הרחבה.</p>
+        <p>הוא גם כותב ומלחין: את ״מי יחיה״ שבסדרה החדשה הלחין בעצמו, ואת המילים ל״יבטל״ של ארי וייס ומקהלת נגינה כתב מהמקורות.</p>
+        <div class="team">
+          <p class="team__title">האנשים מאחורי השירים</p>
+          <ul>
+            <li><b>מנשה פרלשטיין</b><span>הפקה</span></li>
+            <li><b>אברימי שיף</b><span>לחנים</span></li>
+            <li><b>שלוימי לוי</b><span>עיבודים לסדרה</span></li>
+            <li><b>יונתן בלוי</b><span>עיבודים לסינגלים</span></li>
+            <li><b>הרשי סגל</b><span>וידאו ומיקס</span></li>
+            <li><b>מקהלת נגינה</b><span>מקהלה</span></li>
+          </ul>
+        </div>
+      </div>
+      <figure class="quote reveal">
+        <span class="quote__mark" aria-hidden="true">״</span>
+        <blockquote>זה חודש תשרי שאני חווה... זה המסע האישי שלי, אבל אני מאמין שהוא שייך לכל יהודי.</blockquote>
+        <figcaption>לייבי, על הסדרה ״א נייע יאר״</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING ===== -->
+  <section class="booking" id="booking" aria-labelledby="booking-title">
+    <div class="wrap booking__grid">
+      <div class="booking__copy reveal">
+        <p class="eyebrow eyebrow--light">חתונות, שבע ברכות ושמחות</p>
+        <h2 id="booking-title" class="display display--gold">הזמנה לאירוע</h2>
+        <p class="booking__lead">ממלאים ארבעה פרטים, וההודעה נפתחת אצלכם בוואטסאפ, מוכנה לשליחה.</p>
+        <ul class="booking__points">
+          <li>לבד או עם מקהלה</li>
+          <li>חתונות, שבע ברכות, בר מצווה וכל שמחה</li>
+          <li>תאריך עברי או לועזי, גם ״בערך״ זה בסדר</li>
+        </ul>
+        <p class="booking__phone">מעדיפים לדבר? <a href="tel:+972542862777">054-286-2777</a></p>
+      </div>
+
+      <form class="form reveal" id="booking-form" novalidate>
+        <div class="field">
+          <label for="f-name">איך קוראים לכם?</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="גם שם פרטי מספיק" required>
+          <p class="field__err" id="err-name" hidden>רק שם, ואפשר להמשיך</p>
+        </div>
+
+        <fieldset class="field">
+          <legend>איזו שמחה?</legend>
+          <div class="chips" id="f-type">
+            <label><input type="radio" name="type" value="חתונה" checked><span>חתונה</span></label>
+            <label><input type="radio" name="type" value="שבע ברכות"><span>שבע ברכות</span></label>
+            <label><input type="radio" name="type" value="בר מצווה"><span>בר מצווה</span></label>
+            <label><input type="radio" name="type" value="אירוע אחר"><span>אחר</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-date">לאיזה תאריך?</label>
+            <input id="f-date" name="date" type="text" placeholder="למשל: ט״ו בשבט">
+          </div>
+          <div class="field">
+            <label for="f-place">איפה?</label>
+            <input id="f-place" name="place" type="text" placeholder="עיר או אולם">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-notes">משהו שחשוב לדעת? <small>(רשות)</small></label>
+          <textarea id="f-notes" name="notes" rows="3" placeholder="עם מקהלה? כמה אורחים בערך?"></textarea>
+        </div>
+
+        <button class="btn btn--gold btn--block" type="submit">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+          תבדקו לי את התאריך
+        </button>
+        <p class="form__note" id="form-note">ההודעה נפתחת בוואטסאפ, ואתם מחליטים אם לשלוח.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div>
+      <p class="foot__mark">לייבי דייטש</p>
+      <p class="foot__latin" lang="en" dir="ltr">LAYBI DAITSCH</p>
+    </div>
+    <div class="foot__cols">
+      <div>
+        <p class="foot__h">להאזנה</p>
+        <a href="https://www.youtube.com/@LaybiDaitsch" target="_blank" rel="noopener">יוטיוב</a>
+        <a href="https://open.spotify.com/artist/0UBXvRWo2X4ObWShXLN32c" target="_blank" rel="noopener">ספוטיפיי</a>
+        <a href="https://music.apple.com/il/artist/1842622905" target="_blank" rel="noopener">אפל מיוזיק</a>
+        <a href="https://www.deezer.com/artist/348194181" target="_blank" rel="noopener">דיזר</a>
+      </div>
+      <div>
+        <p class="foot__h">הזמנות ויחסי ציבור</p>
+        <p>קונטרול</p>
+        <a href="tel:+972542862777">054-286-2777</a>
+        <a href="mailto:controly.a.p@gmail.com">controly.a.p@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot__base">
+    <span>© 2026 לייבי דייטש</span>
+    <span>עיצוב ובנייה: סטודיו חיים קליין</span>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#booking" aria-label="הזמנה לאירוע">הזמנה לאירוע</a>
+
+<dialog class="modal" id="modal" aria-label="נגן וידאו">
+  <div class="modal__box">
+    <button class="modal__x" id="modal-x" type="button" aria-label="סגירת הנגן">×</button>
+    <div class="modal__frame" id="modal-frame"></div>
+    <p class="modal__title" id="modal-title"></p>
+  </div>
+</dialog>
+
+<script src="data.js?v=7"></script>
+<script src="app.js?v=7"></script>
+</body>
+</html>

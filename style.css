@@ -1,10 +1,13 @@
-/* ===== Fonts: פרנק רע לכותרות ופלוני לטקסט (איתמר נתן, אאא) ===== */
+/* ===== Fonts: דידה FM (טימור כהן) לכותרות הגדולות, פרנק רע לפסקאות, אלמוני לטקסט ולוי דק לתוויות ===== */
+@font-face{font-family:"Dida FM";src:url("assets/fonts/dida-fm-regular.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Frank Re";src:url("assets/fonts/frank-re-bold-aaa.woff2") format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Frank Re";src:url("assets/fonts/frank-re-medium-aaa.woff2") format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"Ploni";src:url("assets/fonts/ploni-light-aaa.woff2") format("woff2");font-weight:300;font-display:swap}
-@font-face{font-family:"Ploni";src:url("assets/fonts/ploni-regular-aaa.woff2") format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"Ploni";src:url("assets/fonts/ploni-demibold-aaa.woff2") format("woff2");font-weight:600;font-display:swap}
-@font-face{font-family:"Ploni";src:url("assets/fonts/ploni-bold-aaa.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Almoni";src:url("assets/fonts/almoni-light-aaa.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Almoni";src:url("assets/fonts/almoni-regular-aaa.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Almoni";src:url("assets/fonts/almoni-demibold-aaa.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Almoni";src:url("assets/fonts/almoni-bold-aaa.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Levi";src:url("assets/fonts/levi-light-aaa.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Levi";src:url("assets/fonts/levi-regular-aaa.woff2") format("woff2");font-weight:400;font-display:swap}
 
 /* ===== Tokens (נדגמו מהעטיפה) ===== */
 :root{
@@ -22,9 +25,10 @@
   --gold-2:#ecd28a;
   --gold-3:#c39a4a;
   --gold-grad:linear-gradient(178deg,var(--gold-1) 8%,var(--gold-2) 48%,var(--gold-3) 100%);
-  --f-display:"Frank Re",serif;
+  --f-display:"Dida FM","Frank Re",serif;
   --f-serif:"Frank Re",serif;
-  --f-sans:"Ploni",system-ui,sans-serif;
+  --f-sans:"Almoni",system-ui,sans-serif;
+  --f-label:"Levi","Almoni",sans-serif;
   --gutter:clamp(16px,4vw,56px);
   --radius:18px;
   --ease:cubic-bezier(.22,.7,.2,1);
@@ -428,3 +432,9 @@ button{font:inherit;color:inherit}
   .reveal{opacity:1;transform:none}
   .hero__name span{clip-path:none}
 }
+
+/* ===== טקסט קטן: לוי דק לתוויות, אלמוני דק לשורות משנה ===== */
+.eyebrow,.wordmark,.now__count,.team__title,.foot__h,.listen__label,.rel__date,.foot__latin,.track__d,.series__credits,.clip__tag{font-family:var(--f-label);font-weight:300}
+.eyebrow,.team__title,.foot__h{font-weight:400}
+.hero__meta,.clip__m,.rel__type,.rel__note,.now__by,.team span,.form__note,.foot__base,.booking__points li,.story__text p,.sec-head__aside,.field small{font-family:var(--f-sans);font-weight:300}
+.story__text p{font-weight:400}

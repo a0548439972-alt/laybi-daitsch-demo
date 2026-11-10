@@ -19,7 +19,7 @@ window.SITE = {
     { type: "wedding", title: "בחתונה ירושלמית", with: "עם שלומי דייטש ומקהלת נגינה", date: "מרץ 2026", yt: "ZWwcGHCMwcY" },
     { type: "wedding", title: "עם שלומי דייטש בתופים", with: "ומקהלת נגינה, על הרחבה", date: "מרץ 2026", yt: "noACTz0RaXA" },
     { type: "live", title: "פורים שוויץ", with: "עם יואלי יורוביץ, מקהלת נגינה ועשרה זמרים", date: "פברואר 2026", yt: "eAfbh9PycPg" },
-    { type: "wedding", title: "מחרוזת מהחתונה של מנשה פרלשטיין", with: "מקהלת נגינה · לייבי שר ב־11 הדקות הראשונות", date: "פברואר 2026", yt: "XtTMLSX9LYY" },
+    { type: "wedding", title: "מחרוזת עם מקהלת נגינה", with: "מחתונה · לייבי שר ב־11 הדקות הראשונות", date: "פברואר 2026", yt: "XtTMLSX9LYY" },
     { type: "clip", title: "כי בא מועד - סוכות", with: "עם מוטי גולדמן, צולם בסוכה", date: "אוקטובר 2025", yt: "WkWTsHKrnWQ" },
     { type: "clip", title: "כי בא מועד - יום כיפור", with: "עם אהרל׳ה סאמט", date: "ספטמבר 2025", yt: "YDFD7L4jSrs" },
     { type: "clip", title: "כי בא מועד - ראש השנה", with: "עם חיים פולק", date: "ספטמבר 2025", yt: "HHMpk8U3T9Y" },
@@ -28,7 +28,7 @@ window.SITE = {
     { type: "live", title: "אדרבה", with: "עם שרוליק לפקוביץ ואהרל׳ה מושקוביץ", date: "מרץ 2025", yt: "RzBQnf2InDU" }
   ],
   releases: [
-    { title: "א נייע יאר", type: "אי.פי, חמישה שירים", date: "ספטמבר 2026", note: "לחנים אברימי שיף ולייבי דייטש · עיבודים שלוימי לוי · מנשה פרלשטיין מגיש",
+    { title: "א נייע יאר", type: "אי.פי, חמישה שירים", date: "ספטמבר 2026", note: "לחנים אברימי שיף ולייבי דייטש · עיבודים שלוימי לוי",
       links: [["להאזנה כאן", "#series"], ["ספוטיפיי", "https://open.spotify.com/album/6jnKoawIGGaruiMvYVcGN1"], ["אפל מיוזיק", "https://music.apple.com/il/album/6812820288"], ["דיזר", "https://www.deezer.com/album/1080281712"]] },
     { title: "ביז ווי לאנג", type: "סינגל וקליפ", date: "יוני 2026", note: "תפילת דוד המלך עם פירוש ביידיש · לחן אברימי שיף · עיבוד יונתן בלוי",
       links: [["יוטיוב", "https://www.youtube.com/watch?v=UQEr8TdRV4o"], ["אפל מיוזיק", "https://music.apple.com/il/album/6816739947"], ["דיזר", "https://www.deezer.com/album/1107834752"]] },

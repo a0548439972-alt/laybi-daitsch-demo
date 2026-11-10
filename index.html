@@ -7,7 +7,7 @@
 <meta name="description" content="האתר של הזמר לייבי דייטש: הסדרה החדשה א נייע יאר, קליפים, קטעים מחתונות והזמנה לאירוע בוואטסאפ.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#261f25">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -37,25 +37,14 @@
         <source src="assets/hero.mp4" type="video/mp4">
       </video>
       <div class="hero__veil"></div>
+      <!-- מסגרת דקה: למעלה ולמטה חמשה כמו דף תווים -->
+      <div class="hero__frame" aria-hidden="true"></div>
       <h1 id="hero-title" class="hero__name"><span>לייבי דייטש</span></h1>
+      <a class="hero__scroll" href="#series" aria-label="גלילה למטה"><span></span></a>
       <button class="hero__replay" id="hero-replay" type="button" aria-label="לצפות בפתיחה">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
       </button>
     </div>
-
-    <div class="hero__panel">
-      <p class="eyebrow eyebrow--light">חדש · תשרי תשפ״ז</p>
-      <p class="hero__lead">חמישה שירים חדשים <br>לחודש תשרי</p>
-      <p class="hero__meta">מנשה פרלשטיין מגיש</p>
-      <div class="hero__ctas">
-        <a class="btn btn--gold" href="#series"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>להאזנה לסדרה</a>
-        <a class="btn btn--ghost" href="#booking">הזמנה לאירוע</a>
-      </div>
-    </div>
-
-    <a class="hero__scroll" href="#series" aria-label="גלילה לסדרה">
-      <span></span>
-    </a>
   </section>
 
   <!-- ===== SERIES: A NEIE YOR ===== -->
@@ -68,7 +57,7 @@
         <p class="eyebrow">הסדרה החדשה</p>
         <h2 id="series-title" class="display">א נייע יאר</h2>
         <p class="series__sub">חמישה שירים לימים הנוראים ולסוכות.<br>לכל שיר עטיפה משלו, ובחרנו לכל שיר את הצבע שלו.</p>
-        <p class="series__credits">לחנים: אברימי שיף ולייבי דייטש · עיבודים: שלוימי לוי · מנשה פרלשטיין מגיש</p>
+        <p class="series__credits">לחנים: אברימי שיף ולייבי דייטש · עיבודים: שלוימי לוי</p>
 
         <ol class="tracks" id="tracks" aria-label="השירים בסדרה"></ol>
 
@@ -132,13 +121,12 @@
       <div class="story__text reveal">
         <p class="eyebrow eyebrow--light">הסיפור</p>
         <h2 id="story-title" class="display display--gold">מחבר מקהלה לסולן</h2>
-        <p>לייבי שר שנים במקהלה ולא חלם על סולו. בחתונה של גיסו, שאליה הגיע כמעט בעל כורחו כזמר, שמעו אותו המפיק מנשה פרלשטיין והרשי סגל. משם זה התחיל.</p>
+        <p>לייבי שר שנים במקהלה ולא חלם על סולו. בחתונה של גיסו, שאליה הגיע כמעט בעל כורחו כזמר, שמעו אותו אנשי מקצוע מעולם המוזיקה. משם זה התחיל.</p>
         <p>היום הוא זמר חתונות מבוקש. רגוע ושקט בשיחה, ומלא אנרגיה על הרחבה.</p>
         <p>הוא גם כותב ומלחין: את ״מי יחיה״ שבסדרה החדשה הלחין בעצמו, ואת המילים ל״יבטל״ של ארי וייס ומקהלת נגינה כתב מהמקורות.</p>
         <div class="team">
           <p class="team__title">האנשים מאחורי השירים</p>
           <ul>
-            <li><b>מנשה פרלשטיין</b><span>הפקה</span></li>
             <li><b>אברימי שיף</b><span>לחנים</span></li>
             <li><b>שלוימי לוי</b><span>עיבודים לסדרה</span></li>
             <li><b>יונתן בלוי</b><span>עיבודים לסינגלים</span></li>
@@ -252,7 +240,7 @@
   </div>
 </dialog>
 
-<script src="data.js?v=9"></script>
-<script src="app.js?v=9"></script>
+<script src="data.js?v=13"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>

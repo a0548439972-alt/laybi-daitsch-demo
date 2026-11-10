@@ -106,7 +106,6 @@ button{font:inherit;color:inherit}
 /* ===== Hero ===== */
 .hero{position:relative;height:100svh;min-height:560px;max-height:calc(56.25vw + 76px);overflow:hidden;background:var(--plum-900)}
 .hero__media{position:absolute;inset:76px 0 0;overflow:hidden}
-.hero .eyebrow{color:var(--gold-2)}
 .hero__img{
   width:100%;height:100%;object-fit:cover;object-position:50% 30%;
   transform-origin:50% 38%;animation:push 16s var(--ease) both;
@@ -118,37 +117,57 @@ button{font:inherit;color:inherit}
     radial-gradient(ellipse 70% 80% at 50% 40%,transparent 55%,rgba(27,21,26,.45) 100%),
     linear-gradient(180deg,var(--plum-900) 0%,rgba(36,29,35,.5) 4%,transparent 14%,transparent 90%,var(--plum-900) 100%);
 }
-.hero__panel{
-  position:absolute;z-index:2;inset-inline-start:var(--gutter);top:50%;transform:translateY(-38%);
-  width:min(21vw,300px);
-  animation:rise 1.2s 2.2s var(--ease) both;
+/* מסגרת דקה: למעלה ולמטה חמשה של דף תווים עם קווי תיבה, ובצדדים קו אחד */
+.hero__frame{
+  --fl:rgba(236,210,138,.24);--fi:clamp(14px,2vw,28px);--st:5px;
+  position:absolute;inset:var(--fi);z-index:2;pointer-events:none;
+  border-inline:1px solid var(--fl);
 }
-@keyframes rise{from{opacity:0;transform:translateY(-30%)}to{opacity:1;transform:translateY(-38%)}}
-.hero__lead{font-family:var(--f-serif);font-weight:500;font-size:clamp(22px,2vw,30px);line-height:1.25;margin:0 0 14px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
-.hero__meta{margin:0 0 26px;font-size:15px;color:var(--cream-soft)}
-.hero__ctas{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.hero__frame::before,.hero__frame::after{
+  content:"";position:absolute;left:-1px;right:-1px;height:calc(var(--st)*4 + 1px);
+  background:
+    linear-gradient(var(--fl),var(--fl)) 25% 0/1px 100% no-repeat,
+    linear-gradient(var(--fl),var(--fl)) 50% 0/1px 100% no-repeat,
+    linear-gradient(var(--fl),var(--fl)) 75% 0/1px 100% no-repeat,
+    repeating-linear-gradient(to bottom,var(--fl) 0 1px,transparent 1px var(--st));
+}
+.hero__frame::before{top:0}
+/* בסוף החמשה התחתונה: קו סיום כפול, כמו בסוף יצירה */
+.hero__frame::after{bottom:0;
+  background:
+    linear-gradient(var(--fl),var(--fl)) 0 0/3px 100% no-repeat,
+    linear-gradient(var(--fl),var(--fl)) 7px 0/1px 100% no-repeat,
+    linear-gradient(var(--fl),var(--fl)) 25% 0/1px 100% no-repeat,
+    linear-gradient(var(--fl),var(--fl)) 50% 0/1px 100% no-repeat,
+    linear-gradient(var(--fl),var(--fl)) 75% 0/1px 100% no-repeat,
+    repeating-linear-gradient(to bottom,var(--fl) 0 1px,transparent 1px var(--st));
+}
 /* השם נכתב מימין לשמאל אחרי שהיד מגיעה לסנטר */
 .hero__name{
-  position:absolute;z-index:2;left:0;right:0;bottom:6%;margin:0;text-align:center;pointer-events:none;
-  font-family:var(--f-display);font-weight:700;font-size:clamp(40px,7.4vw,118px);line-height:1;
+  position:absolute;z-index:2;left:0;right:0;bottom:calc(var(--fi,28px) + clamp(70px,9vh,104px));margin:0;text-align:center;pointer-events:none;
+  font-family:var(--f-display);font-weight:700;font-size:clamp(64px,11.5vw,184px);line-height:1;
+  --fi:clamp(14px,2vw,28px);
 }
 .hero__name span{
   display:inline-block;padding:.08em .12em;
   background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 2px 0 rgba(90,60,20,.5)) drop-shadow(0 12px 40px rgba(0,0,0,.45));
+  filter:drop-shadow(0 2px 0 rgba(90,60,20,.5)) drop-shadow(0 14px 44px rgba(0,0,0,.5));
   clip-path:inset(0 0 0 100%);
 }
 .hero.is-named .hero__name span{animation:write 1.6s var(--ease) forwards}
 @keyframes write{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
 .hero__replay{
-  position:absolute;z-index:3;bottom:20px;inset-inline-start:20px;width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  position:absolute;z-index:3;bottom:calc(clamp(14px,2vw,28px) + 34px);inset-inline-start:calc(clamp(14px,2vw,28px) + 22px);width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;
   display:grid;place-items:center;background:rgba(27,21,26,.45);backdrop-filter:blur(8px);color:var(--cream);
-  box-shadow:inset 0 0 0 1px rgba(244,236,228,.35);opacity:0;pointer-events:none;transition:opacity .5s,background .3s;
+  box-shadow:inset 0 0 0 1px rgba(244,236,228,.3);opacity:0;pointer-events:none;transition:opacity .5s,background .3s;
 }
-.hero__replay svg{width:18px;height:18px;fill:currentColor;transform:translateX(1px)}
+.hero__replay svg{width:16px;height:16px;fill:currentColor;transform:translateX(1px)}
 .hero__replay:hover{background:rgba(27,21,26,.7)}
 .hero.can-replay .hero__replay{opacity:1;pointer-events:auto}
-.hero__scroll{position:absolute;z-index:2;bottom:28px;inset-inline-end:var(--gutter);width:26px;height:42px;border-radius:14px;box-shadow:inset 0 0 0 1.5px rgba(244,236,228,.5)}
+/* אייקון גלילה במרכז, מתחת לשם */
+.hero__scroll{position:absolute;z-index:3;left:50%;bottom:calc(clamp(14px,2vw,28px) + 36px);width:26px;height:42px;margin-left:-13px;border-radius:14px;
+  box-shadow:inset 0 0 0 1.5px rgba(244,236,228,.55);opacity:0;transition:opacity 1s .4s}
+.hero.is-named .hero__scroll{opacity:1}
 .hero__scroll span{position:absolute;top:8px;left:50%;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:var(--cream);animation:wheel 2s infinite}
 @keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
 
@@ -383,13 +402,14 @@ button{font:inherit;color:inherit}
 /* הירו מוערם: מסכים צרים או גבוהים, כדי שהעטיפה תוצג שלמה */
 @media (max-width:900px),(max-aspect-ratio:29/20){
   .hero{height:auto;max-height:none;min-height:0;padding-top:76px}
-  .hero__media{position:relative;inset:auto;aspect-ratio:16/9}
+  .hero__media{position:relative;inset:auto;height:min(64svh,640px)}
+  .hero__img{object-position:50% 40%}
   .hero__img{animation-duration:12s}
   .hero__veil{background:linear-gradient(180deg,transparent 70%,var(--plum-900) 100%)}
-  .hero__panel{position:relative;inset:auto;transform:none;width:auto;padding:26px var(--gutter) 56px;text-align:center;animation:none}
-  .hero__lead br,.hero__meta br{display:none}
-  .hero__ctas{flex-direction:row;justify-content:center;flex-wrap:wrap}
+  .hero__frame{--fi:10px;--st:3px}
+  .hero__name{bottom:26px;font-size:clamp(52px,14vw,120px)}
   .hero__scroll{display:none}
+  .hero__replay{bottom:20px;inset-inline-start:20px;width:36px;height:36px}
 }
 
 @media (max-width:900px){
@@ -407,7 +427,6 @@ button{font:inherit;color:inherit}
   .series__stage{margin:26px 0 30px}
   .tracks{order:1}.listen{order:2}
   .series__num{font-size:70vw;bottom:auto;top:30%}
-  .hero__panel{padding-bottom:24px}
   .series{padding-block:64px 80px}
   .series::before{height:90px}
   .clip-grid{grid-template-columns:1fr 1fr}
@@ -417,7 +436,6 @@ button{font:inherit;color:inherit}
 }
 
 @media (max-width:560px){
-  .hero__ctas .btn{flex:1 1 100%}
   .clip-grid{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr;gap:0}
   .rel{grid-template-columns:1fr;grid-template-areas:"d" "t" "n" "l"}
@@ -436,5 +454,5 @@ button{font:inherit;color:inherit}
 /* ===== טקסט קטן: לוי דק לתוויות, אלמוני דק לשורות משנה ===== */
 .eyebrow,.wordmark,.now__count,.team__title,.foot__h,.listen__label,.rel__date,.foot__latin,.track__d,.series__credits,.clip__tag{font-family:var(--f-label);font-weight:300}
 .eyebrow,.team__title,.foot__h{font-weight:400}
-.hero__meta,.clip__m,.rel__type,.rel__note,.now__by,.team span,.form__note,.foot__base,.booking__points li,.story__text p,.sec-head__aside,.field small{font-family:var(--f-sans);font-weight:300}
+.clip__m,.rel__type,.rel__note,.now__by,.team span,.form__note,.foot__base,.booking__points li,.story__text p,.sec-head__aside,.field small{font-family:var(--f-sans);font-weight:300}
 .story__text p{font-weight:400}

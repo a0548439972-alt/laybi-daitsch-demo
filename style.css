@@ -6,6 +6,8 @@
 @font-face{font-family:"Almoni";src:url("assets/fonts/almoni-regular-aaa.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Almoni";src:url("assets/fonts/almoni-demibold-aaa.woff2") format("woff2");font-weight:600;font-display:swap}
 @font-face{font-family:"Almoni";src:url("assets/fonts/almoni-bold-aaa.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Ploni Yad";src:url("assets/fonts/ploni-yad-regular-aaa.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Ploni Yad";src:url("assets/fonts/ploni-yad-medium-aaa.woff2") format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Levi";src:url("assets/fonts/levi-light-aaa.woff2") format("woff2");font-weight:300;font-display:swap}
 @font-face{font-family:"Levi";src:url("assets/fonts/levi-regular-aaa.woff2") format("woff2");font-weight:400;font-display:swap}
 
@@ -456,3 +458,126 @@ button{font:inherit;color:inherit}
 .eyebrow,.team__title,.foot__h{font-weight:400}
 .clip__m,.rel__type,.rel__note,.now__by,.team span,.form__note,.foot__base,.booking__points li,.story__text p,.sec-head__aside,.field small{font-family:var(--f-sans);font-weight:300}
 .story__text p{font-weight:400}
+
+/* =====================================================================
+   10.11: סדר חדש. א נייע יאר נקי, במה לקליפים, מהחתונות, והסיפור
+   ===================================================================== */
+
+/* ----- א נייע יאר ----- */
+.series__sub{font-family:var(--f-sans);font-weight:300;font-size:clamp(20px,1.7vw,24px);margin:14px 0 34px;letter-spacing:.02em}
+.now__by{font-size:16px}
+
+/* ----- במה לקליפים: נעוצה ונעה הצידה ----- */
+.reel{position:relative;background:
+  radial-gradient(ellipse 60% 50% at 80% 10%,rgba(171,138,138,.16),transparent 70%),var(--plum-900)}
+.reel__pin{padding-block:clamp(80px,9vw,120px) 40px}
+.reel.is-pinned .reel__pin{position:sticky;top:0;height:100svh;padding-block:96px 34px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.reel__head{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;margin-bottom:clamp(24px,3.4vh,40px)}
+.reel__sub{margin:0;font-family:var(--f-label);font-weight:300;font-size:16px;letter-spacing:.18em;color:var(--mauve)}
+.reel__viewport{overflow:hidden}
+.reel__track{display:flex;gap:clamp(18px,2vw,30px);width:max-content;padding-inline:var(--gutter);will-change:transform}
+.reel-card{flex:0 0 auto;width:min(58vw,820px);background:none;border:0;padding:0;cursor:pointer;text-align:start;color:inherit}
+.reel.is-pinned .reel-card{width:min(58vw,calc((100svh - 330px) * 16 / 9))}
+.reel-card__media{position:relative;display:block;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:var(--plum-800);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06)}
+.reel-card__media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.reel-card:hover .reel-card__media img{transform:scale(1.04)}
+.reel-card__media::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(27,21,26,.45))}
+.reel-card .play-orb{z-index:2;width:76px;height:76px;margin:-38px 0 0 -38px;opacity:.95}
+.reel-card__body{display:flex;align-items:flex-start;gap:18px;padding-top:18px}
+.reel-card__n{font-family:var(--f-label);font-weight:300;font-size:15px;color:var(--gold-2);padding-top:12px;min-width:26px}
+.reel-card__txt{display:flex;flex-direction:column;gap:4px}
+.reel-card__s{font-family:var(--f-label);font-weight:300;font-size:14px;letter-spacing:.14em;color:var(--mauve)}
+.reel-card__t{font-family:var(--f-display);font-size:clamp(30px,3vw,46px);line-height:1.05}
+.reel-card__m{font-weight:300;font-size:15px;color:var(--cream-soft)}
+.reel-intro{flex:0 0 auto;width:min(26vw,340px);align-self:stretch;display:flex;flex-direction:column;justify-content:center;
+  padding:28px 30px;border-inline:1px solid rgba(236,210,138,.28)}
+.reel-intro__k{margin:0 0 8px;font-family:var(--f-label);font-weight:300;letter-spacing:.3em;font-size:14px;color:var(--mauve)}
+.reel-intro__t{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(44px,4.4vw,70px);line-height:1;
+  background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-block:.06em}
+.reel-intro__p{margin:16px 0 0;font-weight:300;font-size:17px;line-height:1.55;color:var(--cream-soft)}
+.reel-intro__arrow{margin-top:22px;font-size:26px;color:var(--gold-2)}
+.reel__foot{margin-top:clamp(22px,3vh,34px)}
+.reel__bar{display:block;height:1px;background:rgba(244,236,228,.14);overflow:hidden}
+.reel__bar i{display:block;height:100%;background:var(--gold-2);transform:scaleX(0);transform-origin:right}
+
+/* ----- מהחתונות ומהבמה: רחבים וצרים יחד ----- */
+.casual{padding-block:clamp(80px,10vw,130px);background:var(--plum-850)}
+.casual__head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(30px,4vw,48px)}
+.casual-grid{
+  --cols:4;--g:16px;--cw:min(100vw - 2 * var(--gutter),1240px - 2 * var(--gutter));
+  display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:var(--g);grid-auto-flow:dense;
+  grid-auto-rows:calc((var(--cw) - (var(--cols) - 1) * var(--g)) / var(--cols) * .5625 - var(--g) / 2);
+}
+.cas{position:relative;overflow:hidden;border:0;padding:0;border-radius:16px;cursor:pointer;background:var(--plum-800);color:var(--cream);text-align:start}
+.cas--wide{grid-column:span 2;grid-row:span 2}
+.cas--tall{grid-column:span 1;grid-row:span 3}
+.cas img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.cas:hover img{transform:scale(1.05)}
+.cas::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(20,15,19,.82))}
+.cas .play-orb{z-index:2;width:50px;height:50px;margin:-25px 0 0 -25px;opacity:0;transition:opacity .4s,transform .4s var(--ease)}
+.cas .play-orb svg{width:18px;height:18px}
+.cas:hover .play-orb,.cas:focus-visible .play-orb{opacity:.95}
+.cas__tag{position:absolute;z-index:2;top:12px;inset-inline-start:12px;font-family:var(--f-label);font-size:13px;letter-spacing:.08em;
+  padding:3px 10px;border-radius:999px;background:rgba(27,21,26,.55);backdrop-filter:blur(6px)}
+.cas__cap{position:absolute;z-index:2;inset-inline:16px;bottom:14px;display:flex;flex-direction:column;gap:2px}
+.cas__t{font-family:var(--f-display);font-size:clamp(20px,1.7vw,26px);line-height:1.1}
+.cas__m{font-weight:300;font-size:14px;color:var(--cream-soft)}
+.cas--tall .cas__t{font-size:clamp(17px,1.4vw,20px)}
+
+/* ----- הסיפור: כמו עטיפה פנימית של אלבום ----- */
+.story{position:relative;overflow:hidden;padding-block:clamp(90px,11vw,160px);background:
+  radial-gradient(ellipse 45% 60% at 18% 45%,rgba(138,90,110,.30),transparent 70%),var(--plum-950)}
+.story__staff{position:absolute;left:0;right:52%;top:30%;height:41px;pointer-events:none;opacity:.6;
+  background:repeating-linear-gradient(to bottom,rgba(236,210,138,.12) 0 1px,transparent 1px 10px)}
+.story__grid{position:relative;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(48px,7vw,120px);align-items:center}
+.story__grid > .story__text{order:-1}
+.story__photo{position:relative;margin:0;padding:0 0 0 clamp(18px,2vw,28px)}
+.story__photo::before{content:"";position:absolute;inset:clamp(18px,2vw,28px) clamp(18px,2vw,28px) calc(-1 * clamp(18px,2vw,28px)) 0;
+  border:1px solid rgba(236,210,138,.35);border-radius:4px;pointer-events:none}
+.story__img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px;box-shadow:0 50px 90px -40px rgba(0,0,0,.8)}
+.story__img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.9) contrast(1.03)}
+.story__img::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,transparent 42%,rgba(27,21,26,.55) 66%,rgba(27,21,26,.94) 100%),
+  linear-gradient(0deg,rgba(138,90,110,.18),rgba(138,90,110,.18))}
+.story__quote{position:absolute;z-index:2;left:calc(clamp(18px,2vw,28px) + 32px);right:32px;bottom:76px;margin:0}
+.story__quote p{margin:0;font-family:"Ploni Yad","Almoni",sans-serif;font-weight:500;font-size:clamp(24px,2.2vw,32px);line-height:1.35;color:var(--cream);
+  text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.story__quote::before{content:"״";display:block;font-family:var(--f-display);font-size:90px;line-height:.5;height:.42em;color:var(--gold-2)}
+.story__cap{position:absolute;z-index:2;left:calc(clamp(18px,2vw,28px) + 32px);right:32px;bottom:36px;
+  font-family:var(--f-label);font-weight:300;font-size:14px;letter-spacing:.06em;color:var(--gold-2)}
+.story__text .display{font-size:clamp(48px,5.4vw,80px);margin-bottom:30px;text-wrap:balance}
+.story__text p{color:var(--cream-soft);font-size:18px;line-height:1.75;margin:0 0 16px;max-width:52ch;font-family:var(--f-sans);font-weight:300}
+.story__text .story__lead{font-family:var(--f-serif);font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.45;color:var(--cream);margin-bottom:22px}
+.story__text .story__pull{font-family:var(--f-display);font-size:clamp(26px,2.4vw,34px);line-height:1.3;color:var(--gold-2);
+  margin:26px 0;padding-inline-start:22px;border-inline-start:2px solid rgba(236,210,138,.5)}
+.credits{margin-top:44px;padding-top:26px;border-top:1px solid rgba(236,210,138,.22);max-width:520px}
+.credits__title{margin:0 0 16px !important;font-family:var(--f-label) !important;font-size:14px !important;letter-spacing:.28em;color:var(--mauve) !important}
+.credits dl{margin:0;display:grid;gap:10px}
+.credits dl div{display:flex;align-items:baseline;gap:12px}
+.credits dt{font-weight:600;font-size:17px;white-space:nowrap}
+.credits dd{margin:0;font-family:var(--f-label);font-weight:300;font-size:15px;color:var(--cream-soft);white-space:nowrap}
+.credits__dots{flex:1;border-bottom:1px dotted rgba(244,236,228,.28);transform:translateY(-4px)}
+
+/* ----- נגן לשורטס ----- */
+.modal.is-tall{width:min(420px,88vw)}
+.modal.is-tall .modal__frame{aspect-ratio:9/16;max-height:80svh;margin-inline:auto}
+
+@media (max-width:900px){
+  .reel-card{width:84vw}
+  .reel-intro{width:70vw;padding:22px 24px}
+  .reel__viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .reel__viewport::-webkit-scrollbar{display:none}
+  .reel-card,.reel-intro{scroll-snap-align:center}
+  .casual-grid{--cols:2;--g:10px}
+  .series__stage,.tracks{width:100%;align-self:stretch}
+  .story__grid{grid-template-columns:1fr}
+  .story__grid > .story__text{order:0}
+  .story__photo{max-width:520px;margin-inline:auto;width:100%}
+  .story__staff{display:none}
+}
+@media (max-width:560px){
+  .cas--tall .cas__t{font-size:16px}
+  .cas__m{display:none}
+  .story__quote{bottom:66px}
+}

@@ -91,7 +91,6 @@
     $("#now-count").textContent = `שיר ${t.n} מתוך ${S.tracks.length}`;
     $("#now-title").textContent = t.title;
     $("#now-by").textContent = t.by;
-    $("#now-blurb").textContent = t.blurb;
     list.querySelectorAll(".track").forEach((li, k) => {
       li.classList.toggle("is-active", k === i);
       li.classList.toggle("is-playing", k === i && play);
@@ -113,53 +112,80 @@
   });
   select(1, false);
 
-  /* ---------- Clips ---------- */
-  const grid = $("#clip-grid");
-  const filters = $("#filters");
-  const TAG = { clip: "קליפ", wedding: "מהחתונות", live: "הופעה" };
-  let filter = "all";
-
-  filters.innerHTML = S.filters.map((f) => {
-    const n = f.id === "all" ? S.videos.length : S.videos.filter((v) => v.type === f.id).length;
-    return `<button type="button" role="tab" data-f="${f.id}" aria-selected="${f.id === "all"}">${esc(f.label)}<span class="count">${n}</span></button>`;
-  }).join("");
-
-  function renderClips() {
-    const items = S.videos.filter((v) => filter === "all" || v.type === filter);
-    grid.innerHTML = items.map((v, k) => {
-      const feat = k === 0 && (filter === "all" ? v.featured : true);
-      return `
-      <button class="clip${feat ? " is-featured" : ""}" type="button" data-yt="${v.yt}" data-title="${esc(v.title)}" style="animation-delay:${k * 60}ms">
-        <span class="clip__media">
-          <img alt="" loading="lazy" decoding="async" data-id="${v.yt}" data-hi="${feat ? 1 : 0}">
-          <span class="clip__tag${v.type === "wedding" ? " clip__tag--wedding" : ""}">${TAG[v.type]}</span>
-          ${PLAY}
-        </span>
-        <span class="clip__body">
-          <span class="clip__t" style="display:block">${esc(v.title)}</span>
-          <span class="clip__m" style="display:block">${esc(v.with)} · ${esc(v.date)}</span>
+  /* ---------- Reel: הקליפים המושקעים, זזים הצידה בגלילה ---------- */
+  const reelSec = $("#clips");
+  const reelVp = $("#reel-viewport");
+  const reel = $("#reel");
+  const reelBar = $("#reel-progress");
+  let num = 0;
+  reel.innerHTML = S.reel.map((v) => {
+    if (v.intro) return `
+      <div class="reel-intro">
+        <p class="reel-intro__k">סדרה</p>
+        <h3 class="reel-intro__t">${esc(v.title)}</h3>
+        <p class="reel-intro__p">${esc(v.text)}</p>
+        <span class="reel-intro__arrow" aria-hidden="true">←</span>
+      </div>`;
+    num++;
+    return `
+      <button class="reel-card" type="button" data-yt="${v.yt}" data-title="${esc(v.title)}">
+        <span class="reel-card__media"><img alt="" loading="lazy" decoding="async" data-id="${v.yt}">${PLAY}</span>
+        <span class="reel-card__body">
+          <span class="reel-card__n">${String(num).padStart(2, "0")}</span>
+          <span class="reel-card__txt">
+            ${v.series ? `<span class="reel-card__s">${esc(v.series)}</span>` : ""}
+            <span class="reel-card__t">${esc(v.title)}</span>
+            <span class="reel-card__m">${esc(v.with)} · ${esc(v.date)}</span>
+          </span>
         </span>
       </button>`;
-    }).join("");
-    grid.querySelectorAll("img[data-id]").forEach((img) => {
-      if (img.dataset.hi === "1") smartThumb(img, img.dataset.id);
-      else img.src = thumb(img.dataset.id, false);
-    });
+  }).join("");
+  reel.querySelectorAll("img[data-id]").forEach((img) => smartThumb(img, img.dataset.id));
+
+  const pinMQ = window.matchMedia("(min-width: 901px) and (prefers-reduced-motion: no-preference)");
+  let reelMax = 0;
+  function sizeReel() {
+    if (pinMQ.matches) {
+      reelMax = Math.max(0, reel.scrollWidth - reelVp.clientWidth);
+      reelSec.style.height = (window.innerHeight + reelMax) + "px";
+      reelSec.classList.add("is-pinned");
+    } else {
+      reelMax = 0; reelSec.style.height = ""; reel.style.transform = ""; reelSec.classList.remove("is-pinned");
+    }
+    moveReel();
   }
-  filters.addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-f]");
-    if (!b) return;
-    filter = b.dataset.f;
-    filters.querySelectorAll("button").forEach((x) => x.setAttribute("aria-selected", x === b));
-    renderClips();
-  });
-  renderClips();
+  function moveReel() {
+    if (!reelMax) { reelBar.style.transform = ""; return; }
+    const r = reelSec.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, -r.top / (reelSec.offsetHeight - window.innerHeight)));
+    reel.style.transform = `translate3d(${(p * reelMax).toFixed(1)}px,0,0)`; // RTL: התוכן ממשיך שמאלה, אז מזיזים ימינה
+    reelBar.style.transform = `scaleX(${p.toFixed(3)})`;
+  }
+  window.addEventListener("scroll", moveReel, { passive: true });
+  window.addEventListener("resize", sizeReel);
+  window.addEventListener("load", sizeReel);
+  sizeReel();
+  if (!pinMQ.matches) reelVp.addEventListener("scroll", () => {
+    const max = reelVp.scrollWidth - reelVp.clientWidth;
+    reelBar.style.transform = `scaleX(${max ? Math.abs(reelVp.scrollLeft) / max : 0})`;
+  }, { passive: true });
+
+  /* ---------- Casual: מהחתונות ומהבמה ---------- */
+  const casual = $("#casual");
+  casual.innerHTML = S.casual.map((v) => `
+    <button class="cas cas--${v.shape}" type="button" data-yt="${v.yt}" data-title="${esc(v.title)}" data-shape="${v.shape}">
+      <img alt="" loading="lazy" decoding="async" src="${thumb(v.yt, false)}">
+      <span class="cas__tag">${esc(v.tag)}</span>
+      ${PLAY}
+      <span class="cas__cap"><span class="cas__t">${esc(v.title)}</span>${v.with ? `<span class="cas__m">${esc(v.with)}</span>` : ""}</span>
+    </button>`).join("");
 
   /* ---------- Modal ---------- */
   const modal = $("#modal");
   const frame = $("#modal-frame");
-  function openVideo(id, title) {
+  function openVideo(id, title, tall) {
     if (playing) select(current, false); // עוצרים את נגן הסדרה
+    modal.classList.toggle("is-tall", !!tall);
     frame.innerHTML = `<iframe src="${embed(id)}" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
     $("#modal-title").textContent = title;
     modal.showModal();
@@ -168,19 +194,10 @@
   modal.addEventListener("close", () => { frame.innerHTML = ""; });
   modal.addEventListener("click", (e) => { if (e.target === modal) closeVideo(); });
   $("#modal-x").addEventListener("click", closeVideo);
-  grid.addEventListener("click", (e) => {
-    const c = e.target.closest(".clip");
-    if (c) openVideo(c.dataset.yt, c.dataset.title);
+  document.addEventListener("click", (e) => {
+    const c = e.target.closest(".reel-card, .cas");
+    if (c) openVideo(c.dataset.yt, c.dataset.title, c.dataset.shape === "tall");
   });
-
-  /* ---------- Releases ---------- */
-  $("#releases").innerHTML = S.releases.map((r) => `
-    <li class="rel reveal">
-      <span class="rel__date">${esc(r.date)}</span>
-      <div class="rel__head"><h3 class="rel__t">${esc(r.title)}</h3><span class="rel__type">${esc(r.type)}</span></div>
-      <p class="rel__note">${esc(r.note)}</p>
-      <div class="rel__links">${r.links.map(([l, u]) => `<a href="${u}"${u.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${esc(l)}</a>`).join("")}</div>
-    </li>`).join("");
 
   /* ---------- Booking → WhatsApp ---------- */
   const form = $("#booking-form");

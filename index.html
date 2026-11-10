@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>לייבי דייטש | א נייע יאר, קליפים והזמנות לאירועים</title>
-<meta name="description" content="האתר של הזמר לייבי דייטש: הסדרה החדשה א נייע יאר, קליפים, קטעים מחתונות והזמנה לאירוע בוואטסאפ.">
+<title>לייבי דייטש | זמר חסידי, קליפים והזמנות לאירועים</title>
+<meta name="description" content="האתר של הזמר לייבי דייטש: א נייע יאר, קליפים, קטעים מחתונות והזמנה לאירוע בוואטסאפ.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#261f25">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
     <nav class="nav__links" aria-label="ניווט ראשי">
       <a href="#series">א נייע יאר</a>
       <a href="#clips">קליפים</a>
-      <a href="#songs">השירים</a>
+      <a href="#weddings">מהחתונות</a>
       <a href="#story">הסיפור</a>
     </nav>
     <a class="btn btn--gold btn--sm" href="#booking">הזמנה לאירוע</a>
@@ -54,19 +54,10 @@
 
     <div class="wrap series__grid">
       <div class="series__head reveal">
-        <p class="eyebrow">הסדרה החדשה</p>
         <h2 id="series-title" class="display">א נייע יאר</h2>
-        <p class="series__sub">חמישה שירים לימים הנוראים ולסוכות.<br>לכל שיר עטיפה משלו, ובחרנו לכל שיר את הצבע שלו.</p>
-        <p class="series__credits">לחנים: אברימי שיף ולייבי דייטש · עיבודים: שלוימי לוי</p>
+        <p class="series__sub">חמישה שירים</p>
 
-        <ol class="tracks" id="tracks" aria-label="השירים בסדרה"></ol>
-
-        <div class="listen">
-          <span class="listen__label">להאזנה גם ב:</span>
-          <a href="https://open.spotify.com/album/6jnKoawIGGaruiMvYVcGN1" target="_blank" rel="noopener">ספוטיפיי</a>
-          <a href="https://music.apple.com/il/album/6812820288" target="_blank" rel="noopener">אפל מיוזיק</a>
-          <a href="https://www.deezer.com/album/1080281712" target="_blank" rel="noopener">דיזר</a>
-        </div>
+        <ol class="tracks" id="tracks" aria-label="השירים"></ol>
       </div>
 
       <div class="series__stage reveal">
@@ -80,66 +71,69 @@
           <p class="now__count" id="now-count">שיר 2 מתוך 5</p>
           <h3 class="now__title" id="now-title">א נייע יאר</h3>
           <p class="now__by" id="now-by"></p>
-          <p class="now__blurb" id="now-blurb"></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CLIPS ===== -->
-  <section class="clips" id="clips" aria-labelledby="clips-title">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div>
-          <p class="eyebrow eyebrow--light">לראות ולשמוע</p>
-          <h2 id="clips-title" class="display display--gold">קליפים ומהחתונות</h2>
-        </div>
-        <div class="filters" role="tablist" aria-label="סינון סרטונים" id="filters"></div>
+  <!-- ===== CLIPS: במה לקליפים המושקעים, זזה הצידה בגלילה ===== -->
+  <section class="reel" id="clips" aria-labelledby="clips-title">
+    <div class="reel__pin">
+      <div class="wrap reel__head">
+        <h2 id="clips-title" class="display display--gold">הקליפים</h2>
+        <p class="reel__sub">הקליפים שיצאו לאחרונה</p>
       </div>
-      <div class="clip-grid" id="clip-grid"></div>
-      <p class="clips__more reveal"><a class="link-arrow" href="https://www.youtube.com/@LaybiDaitsch" target="_blank" rel="noopener">לכל הסרטונים בערוץ היוטיוב ←</a></p>
+      <div class="reel__viewport" id="reel-viewport">
+        <div class="reel__track" id="reel"></div>
+      </div>
+      <div class="wrap reel__foot" aria-hidden="true"><span class="reel__bar"><i id="reel-progress"></i></span></div>
     </div>
   </section>
 
-  <!-- ===== SONGS / RELEASES ===== -->
-  <section class="songs" id="songs" aria-labelledby="songs-title">
+  <!-- ===== WEDDINGS: קטעים מפה ומשם, רחבים וצרים ===== -->
+  <section class="casual" id="weddings" aria-labelledby="weddings-title">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div>
-          <p class="eyebrow eyebrow--light">כל ההוצאות</p>
-          <h2 id="songs-title" class="display display--gold">השירים</h2>
-        </div>
-        <p class="sec-head__aside">מ״קרב יום״ ועד ״א נייע יאר״,<br>לפי סדר היציאה.</p>
+      <div class="casual__head reveal">
+        <h2 id="weddings-title" class="display display--gold">מהחתונות ומהבמה</h2>
+        <a class="link-arrow" href="https://www.youtube.com/@LaybiDaitsch" target="_blank" rel="noopener">לערוץ היוטיוב ←</a>
       </div>
-      <ol class="releases" id="releases"></ol>
+      <div class="casual-grid" id="casual"></div>
     </div>
   </section>
 
   <!-- ===== STORY ===== -->
   <section class="story" id="story" aria-labelledby="story-title">
+    <div class="story__staff" aria-hidden="true"></div>
     <div class="wrap story__grid">
+      <figure class="story__photo reveal">
+        <div class="story__img">
+          <img src="assets/story.jpg" alt="לייבי דייטש שר בסוכה, מתוך הקליפ כי בא מועד" width="960" height="1200" loading="lazy" decoding="async">
+        </div>
+        <blockquote class="story__quote">
+          <p>לחן שמלווה אותי מאז ילדותי, הלחן שהיה מתנגן בצופר של שכונתנו, רגע לפני כניסת חג הפסח.</p>
+        </blockquote>
+        <figcaption class="story__cap">לייבי, על ״קרב יום״, לחן האדמו״ר מבעלזא</figcaption>
+      </figure>
+
       <div class="story__text reveal">
-        <p class="eyebrow eyebrow--light">הסיפור</p>
-        <h2 id="story-title" class="display display--gold">מחבר מקהלה לסולן</h2>
-        <p>לייבי שר שנים במקהלה ולא חלם על סולו. בחתונה של גיסו, שאליה הגיע כמעט בעל כורחו כזמר, שמעו אותו אנשי מקצוע מעולם המוזיקה. משם זה התחיל.</p>
-        <p>היום הוא זמר חתונות מבוקש. רגוע ושקט בשיחה, ומלא אנרגיה על הרחבה.</p>
-        <p>הוא גם כותב ומלחין: את ״מי יחיה״ שבסדרה החדשה הלחין בעצמו, ואת המילים ל״יבטל״ של ארי וייס ומקהלת נגינה כתב מהמקורות.</p>
-        <div class="team">
-          <p class="team__title">האנשים מאחורי השירים</p>
-          <ul>
-            <li><b>אברימי שיף</b><span>לחנים</span></li>
-            <li><b>שלוימי לוי</b><span>עיבודים לסדרה</span></li>
-            <li><b>יונתן בלוי</b><span>עיבודים לסינגלים</span></li>
-            <li><b>הרשי סגל</b><span>וידאו ומיקס</span></li>
-            <li><b>מקהלת נגינה</b><span>מקהלה</span></li>
-          </ul>
+        <h2 id="story-title" class="display display--gold">הוא לא חלם על סולו</h2>
+        <p class="story__lead">שנים לייבי עמד בשורות של המקהלה, ושם היה לו טוב.</p>
+        <p>בחתונה של גיסו הוא שר, כמעט בעל כורחו. שניים מאנשי המוזיקה שהיו באולם שמעו אותו, ואחד מהם אמר לשני:</p>
+        <p class="story__pull">״או שאתה לוקח אותו ומקדם אותו, או שאני לוקח אותו.״</p>
+        <p>בהמשך התקשר אליו מנהל המקהלה ובישר לו שהוא ״בדרך החוצה״. הגיע הזמן לשיר לבד.</p>
+        <p>היום הוא זמר חתונות מבוקש. בשיחה הוא שקט ורגוע, ועל הרחבה הוא נותן את כל האנרגיה. את ״מי יחיה״ מתוך ״א נייע יאר״ הוא הלחין בעצמו.</p>
+
+        <div class="credits">
+          <p class="credits__title">האנשים מאחורי השירים</p>
+          <dl>
+            <div><dt>אברימי שיף</dt><span class="credits__dots"></span><dd>לחנים</dd></div>
+            <div><dt>שלוימי לוי</dt><span class="credits__dots"></span><dd>עיבודים, א נייע יאר</dd></div>
+            <div><dt>יונתן בלוי</dt><span class="credits__dots"></span><dd>עיבודים, סינגלים</dd></div>
+            <div><dt>הרשי סגל</dt><span class="credits__dots"></span><dd>וידאו ומיקס</dd></div>
+            <div><dt>מקהלת נגינה</dt><span class="credits__dots"></span><dd>מקהלה</dd></div>
+          </dl>
         </div>
       </div>
-      <figure class="quote reveal">
-        <span class="quote__mark" aria-hidden="true">״</span>
-        <blockquote>זה חודש תשרי שאני חווה... זה המסע האישי שלי, אבל אני מאמין שהוא שייך לכל יהודי.</blockquote>
-        <figcaption>לייבי, על הסדרה ״א נייע יאר״</figcaption>
-      </figure>
     </div>
   </section>
 
@@ -213,8 +207,6 @@
         <p class="foot__h">להאזנה</p>
         <a href="https://www.youtube.com/@LaybiDaitsch" target="_blank" rel="noopener">יוטיוב</a>
         <a href="https://open.spotify.com/artist/0UBXvRWo2X4ObWShXLN32c" target="_blank" rel="noopener">ספוטיפיי</a>
-        <a href="https://music.apple.com/il/artist/1842622905" target="_blank" rel="noopener">אפל מיוזיק</a>
-        <a href="https://www.deezer.com/artist/348194181" target="_blank" rel="noopener">דיזר</a>
       </div>
       <div>
         <p class="foot__h">הזמנות ויחסי ציבור</p>
@@ -240,7 +232,7 @@
   </div>
 </dialog>
 
-<script src="data.js?v=13"></script>
-<script src="app.js?v=13"></script>
+<script src="data.js?v=16"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

@@ -844,3 +844,7 @@ button{font:inherit;color:inherit}
 .tale .credits dt{font-size:14px;font-weight:600}
 .tale .credits dd{font-size:13px}
 .tale .credits dd::before{content:"· ";color:var(--mauve)}
+
+/* ===== סבב 10 (11.11): בלי ציטוט על התמונה, פחות רווח בין השורות ===== */
+.tale__img::after{display:none}
+.tale__text .tale__one{line-height:1.55}

@@ -806,3 +806,15 @@ button{font:inherit;color:inherit}
 .tale__over .tale__quote,.tale__over .tale__cap{position:static;inset:auto;margin:0}
 .tale__over .tale__quote p{font-size:clamp(30px,3.4vw,58px);white-space:nowrap}
 .tale__over .tale__cap{text-wrap:balance}
+
+/* ===== סבב 7 (11.11): הטלפון פונה לצד של הטקסט, ובלי גלילה לצדדים בתוך השיחה ===== */
+.phone__body{transform:rotateY(15deg) rotateX(5deg) rotateZ(-2.5deg);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),inset 0 0 0 5px #0a0a0c,
+    0 2px 0 rgba(255,255,255,.05),30px 60px 90px -30px rgba(0,0,0,.75),6px 14px 30px -10px rgba(0,0,0,.5)}
+.phone:hover .phone__body,.phone:focus-within .phone__body{transform:rotateY(6deg) rotateX(2deg) rotateZ(-1deg)}
+.phone__body::before{background:linear-gradient(245deg,rgba(255,255,255,.10) 0%,transparent 26%,transparent 70%,rgba(255,255,255,.05) 100%)}
+.wa__chat,.phone .wa__chat{overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
+@media (max-width:900px){.phone__body,.phone:hover .phone__body,.phone:focus-within .phone__body{transform:none}}
+/* כפתורי הבחירה הנסתרים יצאו מחוץ למסך הטלפון ויצרו גלילה לצדדים */
+.wa__out--chips label{position:relative}
+.wa__out--chips input{inset:0;width:100%;height:100%;margin:0}

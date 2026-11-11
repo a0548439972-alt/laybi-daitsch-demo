@@ -151,8 +151,8 @@
   }).join("");
   reel.querySelectorAll("img[data-id]").forEach((img) => smartThumb(img, img.dataset.id));
 
-  // מסך נמוך (למשל טאבלט לרוחב) לא נועצים: מחליקים, כדי שהכותרות לא ייחתכו
-  const pinMQ = window.matchMedia("(min-width: 901px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)");
+  // במחשב ובטאבלט לרוחב: הבמה נעוצה והקליפים זזים הצידה בגלילה למטה. במסך נמוך הכול מתכווץ כדי שהכותרות ייכנסו
+  const pinMQ = window.matchMedia("(min-width: 901px) and (prefers-reduced-motion: no-preference)");
   let reelMax = 0;
   function sizeReel() {
     if (pinMQ.matches) {

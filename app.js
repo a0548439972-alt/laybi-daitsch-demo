@@ -142,7 +142,8 @@
   }).join("");
   reel.querySelectorAll("img[data-id]").forEach((img) => smartThumb(img, img.dataset.id));
 
-  const pinMQ = window.matchMedia("(min-width: 901px) and (prefers-reduced-motion: no-preference)");
+  // מסך נמוך (למשל טאבלט לרוחב) לא נועצים: מחליקים, כדי שהכותרות לא ייחתכו
+  const pinMQ = window.matchMedia("(min-width: 901px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)");
   let reelMax = 0;
   function sizeReel() {
     if (pinMQ.matches) {
@@ -165,7 +166,8 @@
   window.addEventListener("resize", sizeReel);
   window.addEventListener("load", sizeReel);
   sizeReel();
-  if (!pinMQ.matches) reelVp.addEventListener("scroll", () => {
+  reelVp.addEventListener("scroll", () => {
+    if (reelMax) return;
     const max = reelVp.scrollWidth - reelVp.clientWidth;
     reelBar.style.transform = `scaleX(${max ? Math.abs(reelVp.scrollLeft) / max : 0})`;
   }, { passive: true });
@@ -199,21 +201,16 @@
     if (c) openVideo(c.dataset.yt, c.dataset.title, c.dataset.shape === "tall");
   });
 
-  /* ---------- Booking → WhatsApp ---------- */
+  /* ---------- Booking → WhatsApp (הטופס בנוי כמו שיחה) ---------- */
   const form = $("#booking-form");
+  const nameBubble = $("#name-bubble");
+  const showErr = (on) => { nameBubble.classList.toggle("has-err", on); $("#err-name").hidden = !on; };
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(form));
     const name = (d.name || "").trim();
-    const field = $("#f-name").closest(".field");
-    if (!name) {
-      field.classList.add("has-err");
-      $("#err-name").hidden = false;
-      $("#f-name").focus();
-      return;
-    }
-    field.classList.remove("has-err");
-    $("#err-name").hidden = true;
+    if (!name) { showErr(true); $("#f-name").focus(); return; }
+    showErr(false);
     const lines = [
       `שלום, כאן ${name}.`,
       `אשמח לבדוק אם לייבי דייטש פנוי ל${d.type}${d.date ? ` בתאריך ${d.date.trim()}` : ""}${d.place ? `, ב${d.place.trim()}` : ""}.`,
@@ -221,14 +218,32 @@
     if (d.notes && d.notes.trim()) lines.push(d.notes.trim());
     const url = `https://wa.me/${S.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
     window.open(url, "_blank", "noopener");
-    $("#form-note").textContent = "ההודעה נפתחה בוואטסאפ. לא נפתחה? אפשר להתקשר: 054-286-2777";
+    $("#form-note").textContent = "נפתח בוואטסאפ. לא נפתח? 054-286-2777";
   });
-  $("#f-name").addEventListener("input", () => {
-    if ($("#f-name").value.trim()) {
-      $("#f-name").closest(".field").classList.remove("has-err");
-      $("#err-name").hidden = true;
-    }
-  });
+  $("#f-name").addEventListener("input", () => { if ($("#f-name").value.trim()) showErr(false); });
+  // תיבת ההערות גדלה עם הטקסט, כמו בוואטסאפ
+  $("#f-notes").addEventListener("input", (e) => { e.target.style.height = "auto"; e.target.style.height = e.target.scrollHeight + "px"; });
+
+  /* ---------- רקע שמתחלף בין סקשנים, בצבעי העטיפות של א נייע יאר ---------- */
+  const fx = document.querySelectorAll(".bgfx i");
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let bgNow = "#241d23", bgTimer;
+  fx[0].style.background = bgNow;
+  function setBg(c) {
+    if (!c || c === bgNow) return;
+    bgNow = c;
+    if (calm) { fx[0].style.background = c; return; }
+    clearTimeout(bgTimer);
+    fx[1].classList.remove("go");
+    fx[1].style.background = c;
+    void fx[1].offsetWidth; // מאפס את האנימציה
+    fx[1].classList.add("go");
+    bgTimer = setTimeout(() => { fx[0].style.background = c; fx[1].classList.remove("go"); }, 1150);
+  }
+  const bgIO = new IntersectionObserver((ents) => {
+    ents.forEach((en) => { if (en.isIntersecting) setBg(en.target.dataset.bg); });
+  }, { rootMargin: "-48% 0px -48% 0px" });
+  document.querySelectorAll("[data-bg]").forEach((el) => bgIO.observe(el));
 
   /* ---------- Reveal ---------- */
   const io = new IntersectionObserver((ents) => {

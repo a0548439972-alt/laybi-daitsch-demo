@@ -177,7 +177,7 @@ button{font:inherit;color:inherit}
 .series{
   --ink:#fbf6f1;--ink-soft:rgba(251,246,241,.74);--line:rgba(251,246,241,.18);
   position:relative;overflow:hidden;color:var(--ink);
-  background-color:var(--tc);transition:background-color 1s var(--ease),color .6s;
+  background-color:var(--tc);transition:background-color .55s var(--ease),color .4s;
   padding-block:clamp(90px,12vw,150px);
 }
 .series.is-light{--ink:#2a2026;--ink-soft:rgba(42,32,38,.72);--line:rgba(42,32,38,.16)}
@@ -704,3 +704,83 @@ button{font:inherit;color:inherit}
 .reel:not(.is-pinned) .reel__viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .reel:not(.is-pinned) .reel__viewport::-webkit-scrollbar{display:none}
 .reel:not(.is-pinned) .reel-card,.reel:not(.is-pinned) .reel-intro{scroll-snap-align:center}
+
+/* =====================================================================
+   סבב 5 (11.11): הסיפור בשני טורים, כותרת ההזמנה בשתי שורות, טלפון אמיתי
+   ===================================================================== */
+
+/* ----- הסיפור: תמונה בימין, טקסט בשמאל ----- */
+.story__film,.story__cols{display:none}
+.tale{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(48px,7vw,120px);align-items:start}
+.tale__photo{position:relative;margin:0;padding:0 0 clamp(18px,2vw,28px) clamp(18px,2vw,28px)}
+.tale__photo::before{content:"";position:absolute;inset:clamp(18px,2vw,28px) clamp(18px,2vw,28px) 0 0;
+  border:1px solid rgba(236,210,138,.35);border-radius:4px;pointer-events:none}
+.tale__img{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:4px;box-shadow:0 50px 90px -40px rgba(0,0,0,.8)}
+.tale__img img{width:100%;height:100%;object-fit:cover}
+.tale__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(18,22,20,.6) 70%,rgba(18,22,20,.95) 100%)}
+.tale__quote{position:absolute;z-index:2;left:calc(clamp(18px,2vw,28px) + 30px);right:30px;bottom:calc(clamp(18px,2vw,28px) + 62px);margin:0}
+.tale__quote p{margin:0;font-family:"Ploni Yad","Almoni",sans-serif;font-weight:500;font-size:clamp(24px,2.3vw,34px);line-height:1.35;color:var(--cream);text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.tale__cap{position:absolute;z-index:2;left:calc(clamp(18px,2vw,28px) + 30px);right:30px;bottom:calc(clamp(18px,2vw,28px) + 28px);
+  font-family:var(--f-label);font-weight:300;font-size:14px;letter-spacing:.06em;color:var(--gold-2)}
+.tale__text .display{font-size:clamp(46px,5vw,76px);line-height:1.02;margin:0 0 26px;text-wrap:balance}
+.tale__text p{color:var(--cream-soft);font-size:18px;line-height:1.75;margin:0 0 16px;max-width:54ch;font-family:var(--f-sans);font-weight:300}
+.tale__text .tale__lead{font-family:var(--f-sans);font-weight:700;font-size:clamp(22px,2vw,28px);line-height:1.4;color:var(--cream);margin-bottom:22px}
+.tale .credits{margin-top:40px}
+
+/* ----- כותרת ההזמנה: לייבי גדול, בשמחה שלכם קטן ממנו ----- */
+.bk-title{margin:0;display:flex;flex-direction:column;line-height:.95}
+.bk-title__a{font-family:var(--f-display);font-weight:700;font-size:clamp(84px,10vw,150px);
+  background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-block:.05em;
+  filter:drop-shadow(0 2px 0 rgba(80,50,20,.35)) drop-shadow(0 10px 30px rgba(0,0,0,.25))}
+.bk-title__b{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,3.6vw,54px);color:var(--cream);margin-top:4px}
+.booking__lead{margin-top:22px}
+
+/* ----- טלפון אמיתי, בשיפוע עדין ----- */
+.booking__grid{grid-template-columns:1fr minmax(320px,400px)}
+.phone{perspective:1800px}
+.phone__body{position:relative;padding:12px;border-radius:54px;
+  background:linear-gradient(145deg,#3a3a40 0%,#16161a 40%,#2b2b31 100%);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),inset 0 0 0 5px #0a0a0c,
+    0 2px 0 rgba(255,255,255,.05),-30px 60px 90px -30px rgba(0,0,0,.75),-6px 14px 30px -10px rgba(0,0,0,.5);
+  transform:rotateY(-15deg) rotateX(5deg) rotateZ(2.5deg);transform-origin:50% 50%;
+  transition:transform .9s var(--ease)}
+.phone:hover .phone__body,.phone:focus-within .phone__body{transform:rotateY(-6deg) rotateX(2deg) rotateZ(1deg)}
+.phone__body::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.10) 0%,transparent 26%,transparent 70%,rgba(255,255,255,.05) 100%);z-index:3}
+.phone__island{position:absolute;z-index:4;top:22px;left:50%;width:96px;height:28px;margin-left:-48px;border-radius:20px;background:#000}
+.phone__status{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 28px 6px;background:#202c33;border-radius:42px 42px 0 0;color:#e9edef;font:600 14px/1 -apple-system,system-ui,sans-serif;direction:ltr}
+.phone__icons{display:flex;gap:6px;align-items:center}
+.phone__icons svg{height:11px;width:auto;fill:#e9edef}
+.phone__home{position:absolute;z-index:4;bottom:20px;left:50%;width:120px;height:4px;margin-left:-60px;border-radius:3px;background:rgba(255,255,255,.55)}
+.phone .wa{border-radius:0 0 42px 42px;box-shadow:none}
+.phone .wa__top{padding:8px 12px 10px;gap:10px}
+.wa__back{width:20px;height:20px;color:#00a884;flex:none}
+.wa__acts{margin-inline-start:auto;display:flex;gap:18px;color:#aebac1}
+.wa__acts svg{width:20px;height:20px;fill:currentColor}
+/* טפט עם תווים קטנים, כמו הטפט של וואטסאפ */
+.phone .wa__chat{max-height:440px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' fill='none' stroke='%23ffffff' stroke-opacity='.045' stroke-width='1.4'%3E%3Cpath d='M20 30v-16l12-3v16'/%3E%3Ccircle cx='17' cy='30' r='3'/%3E%3Ccircle cx='29' cy='27' r='3'/%3E%3Cpath d='M86 78v-14'/%3E%3Cellipse cx='83' cy='78' rx='3.4' ry='2.6'/%3E%3Cpath d='M86 64c4 1 6 3 5 7'/%3E%3Cpath d='M60 100h18M60 104h18M60 108h18'/%3E%3C/svg%3E") 0 0/120px 120px,
+    #0b141a}
+/* זנבות לבועות, כמו בוואטסאפ */
+.wa__in,.wa__out{position:relative}
+.wa__in::before,.wa__out::before{content:"";position:absolute;top:0;width:10px;height:12px}
+.wa__in::before{right:-7px;background:#202c33;clip-path:polygon(0 0,100% 0,0 100%)}
+.wa__out::before{left:-7px;background:#005c4b;clip-path:polygon(0 0,100% 0,100% 100%)}
+.wa__out::after{content:"10:24 ✓✓";position:absolute;left:10px;bottom:3px;font-size:10.5px;color:#53bdeb;letter-spacing:.02em;direction:ltr}
+.wa__out{padding-bottom:18px}
+.wa__out--chips::after{left:12px}
+.phone .wa__bar{padding:10px 12px 34px}
+.wa__hint{background:#202c33;border-radius:22px;padding:11px 16px;color:#8696a0}
+
+@media (max-width:900px){
+  .tale{grid-template-columns:1fr}
+  .tale__photo{max-width:520px;margin-inline:auto;width:100%}
+  .booking__grid{grid-template-columns:1fr}
+  .bk-title__a{font-size:clamp(76px,22vw,110px)}
+  .phone{max-width:390px;margin-inline:auto;width:100%}
+  .phone__body{transform:none}
+  .phone:hover .phone__body,.phone:focus-within .phone__body{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.phone__body{transform:none !important}}

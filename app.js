@@ -82,12 +82,21 @@
       </button>
     </li>`).join("");
 
-  function select(i, play) {
-    current = i;
+  // צבע הרקע לפי השיר. במעבר עכבר הצבע מתחלף כבר לפני הלחיצה
+  function paint(i) {
     const t = S.tracks[i];
     series.style.setProperty("--tc", t.color);
     series.classList.toggle("is-light", isLight(t.color));
     $("#series-num").textContent = String(t.n).padStart(2, "0");
+  }
+  list.addEventListener("mouseover", (e) => { const li = e.target.closest(".track"); if (li) paint(+li.dataset.i); });
+  list.addEventListener("focusin", (e) => { const li = e.target.closest(".track"); if (li) paint(+li.dataset.i); });
+  list.addEventListener("mouseleave", () => paint(current));
+
+  function select(i, play) {
+    current = i;
+    const t = S.tracks[i];
+    paint(i);
     $("#now-count").textContent = `שיר ${t.n} מתוך ${S.tracks.length}`;
     $("#now-title").textContent = t.title;
     $("#now-by").textContent = t.by;
@@ -110,7 +119,7 @@
     const li = e.target.closest(".track");
     if (li) select(+li.dataset.i, true);
   });
-  select(1, false);
+  select(0, false);
 
   /* ---------- Reel: הקליפים המושקעים, זזים הצידה בגלילה ---------- */
   const reelSec = $("#clips");

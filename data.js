@@ -23,7 +23,6 @@ window.SITE = {
   casual: [
     { shape: "wide", tag: "חתונה", title: "בחתונה ירושלמית", with: "עם שלומי דייטש ומקהלת נגינה", yt: "ZWwcGHCMwcY" },
     { shape: "tall", tag: "קצר", title: "קרב יום", yt: "XVcwmTpQ-N8" },
-    { shape: "wide", tag: "חתונה", title: "עם שלומי דייטש בתופים", with: "ומקהלת נגינה, על הרחבה", yt: "noACTz0RaXA" },
     { shape: "tall", tag: "קצר", title: "כי בא מועד · סוכות", yt: "Gzrdy6Gl1xs" },
     { shape: "wide", tag: "חתונה", title: "מחרוזת עם מקהלת נגינה", with: "לייבי שר ב־11 הדקות הראשונות", yt: "XtTMLSX9LYY" },
     { shape: "wide", tag: "במה", title: "פורים שוויץ", with: "עם יואלי יורוביץ ועשרה זמרים", yt: "eAfbh9PycPg" },
